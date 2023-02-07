@@ -8,39 +8,6 @@ DEVELOPER=$?
 # Developer = 1 for DEVELOPER install
 # Developer = 0 for USER install
 
-
-# Ask the user if they want to install a developer version of qtpyvcp
-zenity --question --text="UPDATE linuxcnc 2.9-pre Yes or No?" --no-wrap --ok-label="yes" --cancel-label="no"
-CHOICE=$?
-if [ $CHOICE -eq 0 ]
-then
-	# update linuxcnc
-	cd ~/dev/linuxcnc/rip
-	git pull
-	VERSION=`head -n1 debian/changelog |cut -f2 -d' ' | tr -d "()" | sed -e 's/^[0-9]://' `
-	# set up the build locations for self build
-	CPUS=`nproc`
-	cd ~/dev/linuxcnc/rip/src/
-	make clean
-	./autogen.sh
-	./configure --with-realtime=uspace
-	make -j$CPUS
-
-	sudo -A make setuid
-
-
-	# make the deb files
-	cd ~/dev/linuxcnc/rip/debian/
-	./configure no-docs
-	cd ~/dev/linuxcnc/rip/
-	dpkg-buildpackage -b -uc
-
-	# install the deb files
-	cd ~/dev/linuxcnc/
-	sudo -A dpkg -i linuxcnc-uspace_${VERSION}_amd64.deb
-	#sudo -A dpkg -i linuxcnc-doc-en_${VERSION}_all.deb
-fi
-
 if [ $DEVELOPER -eq 1 ]
 then
 	# get qtpyvcp
