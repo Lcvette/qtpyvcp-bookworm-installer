@@ -21,10 +21,15 @@
 
 
 `cd ~`
+
 `mkdir dev`
+
 `cd dev`
+
 `git clone https://github.com/Lcvette/qtpyvcp-bookworm-installer.git`
+
 `cd qtpyvcp-installer`
+
 `./install_for_qtpyvcp.sh`
 
 
