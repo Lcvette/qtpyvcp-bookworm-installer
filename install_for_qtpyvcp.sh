@@ -57,10 +57,9 @@ then
 	# Install Qt desirner:
 	sudo -A apt install -y qttools5-dev-tools
 
-	# this is not required linuxcnc ships it
 	# install the QTDesigner plugins just in case someone needs to use it
-	## cd ~/dev/qtpyvcp/pyqt5designer/Qt5.15.4-64bit/python3.10/
-	## sudo -A ./install.sh
+	cd ~/dev/qtpyvcp/pyqt5designer/Qt5.15.4-64bit/python3.10/
+	sudo -A ./install.sh
 
 	# copy the qtpyvcp sims into place. People can delete them later if they want
 	cp -r ~/dev/qtpyvcp/linuxcnc ~/
