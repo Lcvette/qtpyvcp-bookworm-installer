@@ -49,7 +49,7 @@ then
 	# create dev directory just in case the user missed this step
 	mkdir -p ~/dev
 	cd ~/dev
-	git clone https://github.com/kcjengr/qtpyvcp.git -b master
+	git clone https://github.com/kcjengr/qtpyvcp.git
 	cd qtpyvcp
 	python3 -m pip install --editable .
 	cp scripts/.xsessionrc ~/
