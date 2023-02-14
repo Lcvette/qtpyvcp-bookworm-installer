@@ -85,7 +85,7 @@ then
 		echo -e "\e[1;34mDeveloper ProbeBasic install started\e[0m"
 		cd ~/dev
 		git clone https://github.com/kcjengr/probe_basic.git
-		git clone https://github.com/kcjengr/qtpyvcp.conversational-gcode.git
+		git clone https://github.com/kcjengr/qtpyvcp_conversational_gcode.git
 
 		cd ~/dev/probe_basic
 
@@ -93,7 +93,7 @@ then
 		python3 -m pip install --no-deps -e .
 		cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
 		
-		cd ~/dev/qtpyvcp.conversational-gcode
+		cd ~/dev/qtpyvcp_conversational_gcode
 
 		python3 -m pip install -e .
 	fi

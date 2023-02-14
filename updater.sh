@@ -23,7 +23,7 @@ then
 		git pull
 		qcompile .
 		
-		cd ~/dev/qtpyvcp.conversational-gcode
+		cd ~/dev/qtpyvcp_conversational_gcode
 		git pull
 	fi
 fi
