@@ -84,9 +84,9 @@ then
 		# developer install
 		echo -e "\e[1;34mDeveloper ProbeBasic install started\e[0m"
 		cd ~/dev
-		git clone https://github.com/kcjengr/probe_basic.git -b python3  # clone python3 branch directly 
-		git clone https://github.com/kcjengr/qtpyvcp.conversational-gcode.git -b python3  # clone python3 branch directly 
-		
+		git clone https://github.com/kcjengr/probe_basic.git
+		git clone https://github.com/kcjengr/qtpyvcp.conversational-gcode.git
+
 		cd ~/dev/probe_basic
 
 		qcompile .
