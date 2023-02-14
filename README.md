@@ -1,6 +1,8 @@
 ## General installation approach
 
-**This is a modified version of Joco's installer script.  I modified to be used on a clean install of debian 12 bookworm (typically I use the xfce nonfree iso) download and install the bookworm iso and run all of your updating.**
+**This is a modified version of Joco's installer script.  I modified to be used on a clean install of debian 12 bookworm (typically I use the xfce nonfree iso) download and install the bookworm iso.**  
+
+**IMPORTANT!!!  During Linux Bookworm installation, DO NOT set a root password when prompted, just press continue to move to the next section in the visual installer.  Once installed, run all of your updating.**
 
 **1. Install linuxcnc from terminal using apt:**
 
