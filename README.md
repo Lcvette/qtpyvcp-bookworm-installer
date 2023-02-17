@@ -4,19 +4,22 @@
 
 **IMPORTANT!!!  During Linux Bookworm installation, DO NOT set a root password when prompted, just press continue to move to the next section in the visual installer.  Once installed, run all of your updating.**
 
+
+
 **1. Install linuxcnc from terminal using apt:**
 
-
 `sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash`
+
 
 
 **2. Next restart your computer**
 
 
+
 **3. Ensure git is installed:**
 
-
 `sudo apt install git`
+
 
 
 **4. Create a directory and clone the repo to it.  Either clone or download a zip file.**
@@ -34,24 +37,25 @@
 `./install_for_qtpyvcp.sh`
 
 
+
 **To Update QtPyVCP and Probe Basic, from terminal in the installer directory file, run the following script command:**
 
 `./updater.sh`
 
 
-## For noting: Files that must be executable
+
+**To Uninstall QtPyVCP and Probe Basic, from a terminal run the lines below, once completed, delete the /dev folder:**
+
+`#!/bin/bash`
+
+`pip uninstall -y probe_basic qtpyvcp qtpyvcp.conversational-gcode`
+
+
+
+# For noting: Files that must be executable
 
 install_for_qtpyvcp.sh
 
 sudo_helper.sh
 
 updater.sh
-
-
-**To Uninstall QtPyVCP and Probe Basic, from a terminal run the following lines:**
-
-`#!/bin/bash`
-
-`pip uninstall -y probe_basic qtpyvcp qtpyvcp.conversational-gcode`
-
-## Then simply delete the /dev folder with all of its contents and delete the configs from Probe Basic 
