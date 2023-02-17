@@ -21,7 +21,6 @@
 
 **4. Create a directory and clone the repo to it.  Either clone or download a zip file.**
 
-
 `cd ~`
 
 `mkdir dev`
@@ -35,9 +34,10 @@
 `./install_for_qtpyvcp.sh`
 
 
-**To Update QtPyVCP and Probe Basic from terminal in the installer directory file, run the following script command:**
+**To Update QtPyVCP and Probe Basic, from terminal in the installer directory file, run the following script command:**
 
 `./updater.sh`
+
 
 ## For noting: Files that must be executable
 
@@ -47,3 +47,11 @@ sudo_helper.sh
 
 updater.sh
 
+
+**To Uninstall QtPyVCP and Probe Basic, from a terminal run the following lines:**
+
+`#!/bin/bash`
+
+`pip uninstall -y probe_basic qtpyvcp qtpyvcp.conversational-gcode`
+
+## Then simply delete the /dev folder with all of its contents and delete the configs from Probe Basic 
