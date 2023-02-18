@@ -21,8 +21,12 @@
 `sudo apt install git`
 
 
+**4. Ensure zenity is installed:**
 
-**4. Create a directory and clone the repo to it.  Either clone or download a zip file.**
+`sudo apt install zenity`
+
+
+**5. Create a directory and clone the repo to it.  Either clone or download a zip file.**
 
 `cd ~`
 
