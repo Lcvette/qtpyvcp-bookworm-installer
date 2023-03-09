@@ -15,11 +15,6 @@ echo -e "\e[1;34m                                                               
 
 export SUDO_ASKPASS=`pwd`/sudo_helper.sh
 
-which zenity &>/dev/null
-if [ $? -gt 0 ]
-then
-   sudo -A apt install -y zenity
-fi
 echo -e "\e[1;34mDebian Bookworm dependencies Install started\e[0m"
 
 # Install deps line from the offical QTpyvcp doc site.  There is overlap with the above line.  But that doesn't matter and it is simpler to just add the
@@ -47,6 +42,8 @@ then
 	python3 -m venv --system-site-packages venv
 	source venv/bin/activate
 
+	pip install hiyapyco
+
 	cd qtpyvcp
 	qcompile .
 	pip install -e .
@@ -62,6 +59,7 @@ then
 
 	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
 	cp -r ~/dev/probe_basic/dev_launchers/ ~/dev/
+
 	
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
