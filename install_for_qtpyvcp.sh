@@ -50,7 +50,7 @@ then
 	cd qtpyvcp
 	qcompile .
 	pip install -e .
-	#cp scripts/.xsessionrc ~/
+	cp scripts/.xsessionrc ~/
 	
 	# copy the qtpyvcp sims into place. People can delete them later if they want
 	cp -r ~/dev/qtpyvcp/linuxcnc ~/
@@ -61,11 +61,8 @@ then
 	pip install -e .
 
 	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
+	cp -r ~/dev/probe_basic/dev_launchers/ ~/dev/
 	
-	# install the QTDesigner plugins just in case someone needs to use it
-	# cd ~/dev/qtpyvcp/pyqt5designer/Qt5.15.4-64bit/python3.10/
-	# sudo -A ./install.sh
-
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
 	# create dev directory just in case the user missed this step
@@ -79,12 +76,8 @@ else
 	cd qtpyvcp
 	qcompile .
 	pip install -e .
-	#cp scripts/.xsessionrc ~/
+	cp scripts/.xsessionrc ~/
 	
-	# install the QTDesigner plugins just in case someone needs to use it
-	# cd ~/dev/qtpyvcp/pyqt5designer/Qt5.15.4-64bit/python3.10/
-	# sudo -A ./install.sh
-
 fi
 
 zenity --info \
