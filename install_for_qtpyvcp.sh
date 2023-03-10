@@ -16,9 +16,7 @@ echo -e "\e[1;34m                                                               
 echo -e "\e[1;34m        https://github.com/kcjengr/probe_basic   By @Lcvette  2023             \e[0m"
 echo -e "\e[1;34m                                                                               \e[0m"
 
-# Prompt the user to press the any key
-read -n 1 -s -r -p "Press the any key to continue."
-echo -e "\n"
+
 echo -e "\e[1;34mDebian Bookworm dependencies Install started\e[0m"
 
 # Install deps line from the offical QTpyvcp doc site.  There is overlap with the above line.  But that doesn't matter and it is simpler to just add the
@@ -47,51 +45,51 @@ then
 	# create dev directory just in case the user missed this step
 	mkdir -p ~/dev
 	cd ~/dev
-	
+
 	git clone https://github.com/kcjengr/qtpyvcp.git
 	git clone https://github.com/kcjengr/probe_basic.git
 
 	python3 -m venv --system-site-packages venv
 	source venv/bin/activate
-	
+
 	pip install hiyapyco
-	
+
 	cd qtpyvcp
 	pip install -e .
-	
+
 	qcompile .
 	cp scripts/.xsessionrc ~/
-	
+
 	# copy the qtpyvcp sims into place. People can delete them later if they want
 	cp -r ~/dev/qtpyvcp/linuxcnc ~/
 
 	cd ../probe_basic
-	
+
 	pip install -e .
 	qcompile .
 
 	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
-		
+
 	# check freedesktop variables for user paths
 	test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
-	
+
 	# copy launchers in place
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Lathe.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
-	
+
 	# replace "username" with real username in desktop launchers
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
-	
+
 
 	# ensure icons and fonts paths exist
 	mkdir -p /home/$USERNAME/.local/share/icons/
 	mkdir -p /home/$USERNAME/.local/share/fonts/
-	
+
 	# copy icons
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/probe_basic_icon.png /home/$USERNAME/.local/share/icons/probe_basic_mill.png
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/probe_basic_icon_lathe.png /home/$USERNAME/.local/share/icons/probe_basic_lathe.png
@@ -99,7 +97,7 @@ then
 
 	# copy fonts
 	cp /home/$USERNAME/dev/probe_basic/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
-	
+
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
 	# create dev directory just in case the user missed this step
@@ -111,14 +109,14 @@ else
 	source venv/bin/activate
 
 	pip install hiyapyco
-	
+
 	cd qtpyvcp
-	
+
 	pip install -e .
 	qcompile .
-	
+
 	cp scripts/.xsessionrc ~/
-	
+
 fi
 
 # Create a zenity dialog box to ask the user if they want to reboot
