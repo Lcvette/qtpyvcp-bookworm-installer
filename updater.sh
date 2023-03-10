@@ -2,6 +2,9 @@
 
 # get qtpyvcp
 echo "Updating Qtpyvcp"
+
+source ~/dev/venv/bin/activate
+
 cd ~/dev/qtpyvcp
 git pull
 qcompile .
