@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export SUDO_ASKPASS=`pwd`/sudo_helper.sh
-
 # get qtpyvcp
 echo "Updating Qtpyvcp"
 cd ~/dev/qtpyvcp
