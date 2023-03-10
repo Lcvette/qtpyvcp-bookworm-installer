@@ -50,13 +50,10 @@
 
 **To Uninstall QtPyVCP and Probe Basic, from a terminal run the lines below, once completed, delete the /dev folder:**
 
-`#!/bin/bash`
-
-`pip uninstall -y probe_basic qtpyvcp qtpyvcp.conversational-gcode`
+Delete can be accomplished by deleting the dev folder. because this is a venv run in place install it is removed once the directory is deleted.
 
 
-
-# For noting: Files that must be executable
+**For noting: Files that must be executable:**
 
 install_for_qtpyvcp.sh
 
