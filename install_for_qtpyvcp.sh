@@ -48,6 +48,7 @@ then
 
 	git clone https://github.com/kcjengr/qtpyvcp.git
 	git clone https://github.com/kcjengr/probe_basic.git
+	git clone https://github.com/Lcvette/bf20_mill.git -b main
 
 	python3 -m venv --system-site-packages venv
 	source venv/bin/activate
@@ -70,6 +71,13 @@ then
 
 	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
 
+	cd ../bf20_mill
+
+	pip install -e .
+	qcompile .
+
+	cp -r ~/dev/bf20_mill/config/bf20_mill/ ~/linuxcnc/configs/
+
 	# check freedesktop variables for user paths
 	test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 
@@ -77,13 +85,18 @@ then
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Lathe.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
+	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/BF20\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/BF20\ Mill.desktop
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/Designer\ for\ BF20\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ BF20\ Mill.desktop
+
 
 	# replace "username" with real username in desktop launchers
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
+	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ BF20\ Mill.desktop
+	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/BF20\ Mill.desktop
 
 
 	# ensure icons and fonts paths exist
@@ -97,6 +110,11 @@ then
 
 	# copy fonts
 	cp /home/$USERNAME/dev/probe_basic/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/3270-Regular.ttf /home/$USERNAME/.local/share/fonts/3270-Regular.ttf
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/Hack-Regular.ttf /home/$USERNAME/.local/share/fonts/Hack-Regular.ttf
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/SourceCodePro-Medium.ttf /home/$USERNAME/.local/share/fonts/SourceCodePro-Medium.ttf 
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/SourceCodePro-Regular.ttf /home/$USERNAME/.local/share/fonts/SourceCodePro-Regular.ttf
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/Anonymous\ Pro.ttf /home/$USERNAME/.local/share/fonts/Anonymous\ Pro.ttf
 
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
