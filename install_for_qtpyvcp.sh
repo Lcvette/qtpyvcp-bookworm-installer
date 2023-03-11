@@ -5,15 +5,15 @@ export SUDO_ASKPASS=`pwd`/sudo_helper.sh
 USERNAME=$(whoami)
 
 echo -e "\e[1;34m                                                                               \e[0m"
-echo -e "\e[1;34m               ___  ____ ____ ___  ____    ___  ____ ____ _ ____               \e[0m"
-echo -e "\e[1;34m               |__] |__/ |  | |__] |___    |__] |__| [__  | |                  \e[0m"
-echo -e "\e[1;34m               |    |  \ |__| |__] |___    |__] |  | ___] | |___               \e[0m"
+echo -e "\e[1;34m   _______   _________   _______   ______    ____    ____  ____  ____  ____    \e[0m"
+echo -e "\e[1;34m   |  __  \  |   ___/    \___  |  /  __  \   |   \  /   |  |__|  |  |  |  |    \e[0m"
+echo -e "\e[1;34m   |  |_\ /  |   |__      ___| |  | /  \ |   |    \/    |  ____  |  |  |  |    \e[0m"
+echo -e "\e[1;34m   |  ___ \  |   __/     /  ___/  | |  | |   |  |\  /|  |  |  |  |  |  |  |    \e[0m"
+echo -e "\e[1;34m   |  |__\ | |  |       |  /___   | \__/ |   |  | \/ |  |  |  |  |  |  |  |    \e[0m"
+echo -e "\e[1;34m   |_______/ |__|       |______|  \______/   |__|    |__|  |__|  |__|  |__|    \e[0m"
 echo -e "\e[1;34m                                                                               \e[0m"
-echo -e "\e[1;34m               ___  ____ _    _   _ _  _ ____ ___ ____ _    _                  \e[0m"
-echo -e "\e[1;34m               |  | |__   \  /    | |\ | [__   |  |__| |    |                  \e[0m"
-echo -e "\e[1;34m               |__| |___   \/     | | \| ___]  |  |  | |___ |___               \e[0m"
 echo -e "\e[1;34m                                                                               \e[0m"
-echo -e "\e[1;34m        https://github.com/kcjengr/probe_basic   By @Lcvette  2023             \e[0m"
+echo -e "\e[1;34m          https://github.com/joco-nz/bf20_mill      By @Joco 2023              \e[0m"
 echo -e "\e[1;34m                                                                               \e[0m"
 
 
@@ -30,8 +30,8 @@ then
 	exit 1
 fi
 
-# Ask the user if they want to install qtpyvcp or qtpyvcp and probe basic
-zenity --question --text="Install qtpyvcp or qtpyvcp and probe basic" --no-wrap --ok-label="QTPYVCP" --cancel-label="BOTH"
+# Ask the user if they want to install qtpyvcp or qtpyvcp and bf20_mill
+zenity --question --text="Install qtpyvcp or qtpyvcp and BF20 Mill" --no-wrap --ok-label="QTPYVCP" --cancel-label="BOTH"
 
 BOTH=$?
 # BOTH = 1 for BOTH install
@@ -39,7 +39,7 @@ BOTH=$?
 
 if [ $BOTH -eq 1 ]
 then
-	echo -e "\e[1;34mQtPyVCP and Probe Basic install started\e[0m"
+	echo -e "\e[1;34mQtPyVCP and BF20 Mill install started\e[0m"
 
 	# get qtpyvcp
 	# create dev directory just in case the user missed this step
@@ -47,7 +47,6 @@ then
 	cd ~/dev
 
 	git clone https://github.com/kcjengr/qtpyvcp.git
-	git clone https://github.com/kcjengr/probe_basic.git
 	git clone https://github.com/Lcvette/bf20_mill.git -b main
 
 	python3 -m venv --system-site-packages venv
@@ -64,13 +63,6 @@ then
 	# copy the qtpyvcp sims into place. People can delete them later if they want
 	cp -r ~/dev/qtpyvcp/linuxcnc ~/
 
-	cd ../probe_basic
-
-	pip install -e .
-	qcompile .
-
-	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
-
 	cd ../bf20_mill
 
 	pip install -e .
@@ -82,19 +74,11 @@ then
 	test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 
 	# copy launchers in place
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Lathe.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
 	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/BF20\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/BF20\ Mill.desktop
 	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/Designer\ for\ BF20\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ BF20\ Mill.desktop
 
 
 	# replace "username" with real username in desktop launchers
-	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
-	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
-	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
-	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ BF20\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/BF20\ Mill.desktop
 
@@ -104,13 +88,12 @@ then
 	mkdir -p /home/$USERNAME/.local/share/fonts/
 
 	# copy icons
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/probe_basic_icon.png /home/$USERNAME/.local/share/icons/probe_basic_mill.png
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/probe_basic_icon_lathe.png /home/$USERNAME/.local/share/icons/probe_basic_lathe.png
-	cp /home/$USERNAME/dev/probe_basic/dev_launchers/qtpyvcp2.png /home/$USERNAME/.local/share/icons/qtpyvcp.png
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/bf20_mill_icon.png /home/$USERNAME/.local/share/icons/bf20_mill.png
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/qtpyvcp2.png /home/$USERNAME/.local/share/icons/qtpyvcp2.png
 
 	# copy fonts
-	cp /home/$USERNAME/dev/probe_basic/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
 	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/3270-Regular.ttf /home/$USERNAME/.local/share/fonts/3270-Regular.ttf
+	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
 	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/Hack-Regular.ttf /home/$USERNAME/.local/share/fonts/Hack-Regular.ttf
 	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/SourceCodePro-Medium.ttf /home/$USERNAME/.local/share/fonts/SourceCodePro-Medium.ttf 
 	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/SourceCodePro-Regular.ttf /home/$USERNAME/.local/share/fonts/SourceCodePro-Regular.ttf
