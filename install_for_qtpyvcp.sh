@@ -88,8 +88,8 @@ then
 	mkdir -p /home/$USERNAME/.local/share/fonts/
 
 	# copy icons
-	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/bf20_mill_icon.png /home/$USERNAME/.local/share/icons/bf20_mill.png
-	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/qtpyvcp2.png /home/$USERNAME/.local/share/icons/qtpyvcp2.png
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/bf20_mill_icon.png /home/$USERNAME/.local/share/icons/bf20_mill_icon.png
+	cp /home/$USERNAME/dev/bf20_mill/dev_launchers/qtpyvcp_icon.png /home/$USERNAME/.local/share/icons/qtpyvcp_icon.png
 
 	# copy fonts
 	cp /home/$USERNAME/dev/bf20_mill/bf20_mill/fonts/3270-Regular.ttf /home/$USERNAME/.local/share/fonts/3270-Regular.ttf
