@@ -98,8 +98,11 @@ then
 	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
 fi
 
-zenity --info \
-	--title="Installation Finished" \
-	--text="The system will now log you out.\nPlease log back in and perform any tests you feel necessary\nto check the install." \
-	--no-wrap
-xfce4-session-logout --logout
+# Create a zenity dialog box to ask the user if they want to reboot
+if zenity --question --text="A Restart is Required to run, Do you want to reboot now?"; then
+    # If the user clicked "Yes", reboot the system
+    xfce4-session-logout --reboot
+else
+    # If the user clicked "No" or closed the dialog box, exit the script
+    exit 0
+fi
