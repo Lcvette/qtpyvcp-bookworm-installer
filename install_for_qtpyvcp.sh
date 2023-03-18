@@ -68,7 +68,7 @@ then
 	pip install -e .
 	qcompile .
 
-	cp -r ~/dev/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
+	cp -r ~/dev/probe_basic/configs/probe_basic/ ~/linuxcnc/configs/
 
 	# check freedesktop variables for user paths
 	test -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs && source ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
