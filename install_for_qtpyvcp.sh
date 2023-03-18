@@ -47,7 +47,7 @@ then
 	cd ~/dev
 
 	git clone https://github.com/kcjengr/qtpyvcp.git
-	git clone https://github.com/kcjengr/probe_basic.git
+	git clone https://github.com/kcjengr/probe_basic.git -b poetry
 
 	python3 -m venv --system-site-packages venv
 	source venv/bin/activate
@@ -96,7 +96,7 @@ then
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/qtpyvcp2.png /home/$USERNAME/.local/share/icons/qtpyvcp.png
 
 	# copy fonts
-	cp /home/$USERNAME/dev/probe_basic/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
+	cp /home/$USERNAME/dev/probe_basic/fonts/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
 
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
