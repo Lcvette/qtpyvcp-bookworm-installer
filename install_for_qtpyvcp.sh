@@ -47,7 +47,7 @@ then
 	cd ~/dev
 
 	git clone https://github.com/kcjengr/qtpyvcp.git
-	git clone https://github.com/kcjengr/probe_basic.git -b poetry
+	git clone https://github.com/kcjengr/probe_basic.git
 
 	python3 -m venv --system-site-packages venv
 	source venv/bin/activate
