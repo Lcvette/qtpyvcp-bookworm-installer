@@ -78,13 +78,14 @@ then
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Designer\ for\ PB\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
+	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ ATC\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill.desktop
 
 	# replace "username" with real username in desktop launchers
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
-
+	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill.desktop
 
 	# ensure icons and fonts paths exist
 	mkdir -p /home/$USERNAME/.local/share/icons/
@@ -97,6 +98,8 @@ then
 
 	# copy fonts
 	cp /home/$USERNAME/dev/probe_basic/fonts/BebasKai.ttf /home/$USERNAME/.local/share/fonts/BebasKai.ttf
+
+	echo "source ~/dev/venv/bin/activate" >> ~/.bashrc
 
 else
 	echo -e "\e[1;34mQtPyVCP install started\e[0m"
@@ -127,3 +130,4 @@ else
     # If the user clicked "No" or closed the dialog box, exit the script
     exit 0
 fi
+
