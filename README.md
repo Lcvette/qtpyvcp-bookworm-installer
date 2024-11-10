@@ -11,7 +11,7 @@ https://www.debian.org/devel/debian-installer/
 
 **1. Download adnd Install linuxcnc from current lockdown deb file:**
 
-`https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb`
+https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
 
 `cd ~`
 
