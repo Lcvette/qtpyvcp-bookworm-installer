@@ -9,10 +9,15 @@ https://www.debian.org/devel/debian-installer/
 
 
 
-**1. Install linuxcnc from terminal using apt:**
+**1. Download adnd Install linuxcnc from current lockdown deb file:**
 
-`sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash`
+`https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb`
 
+`cd ~`
+
+`cd Downloads`
+
+`sudo dpkg -i linuxcnc-uspace_2.9.3_amd64.deb`
 
 
 **2. Next restart your computer**
