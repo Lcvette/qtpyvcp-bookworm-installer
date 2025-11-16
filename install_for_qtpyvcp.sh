@@ -80,6 +80,7 @@ then
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Lathe.desktop ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ ATC\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill.desktop
 	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ ATC\ Mill\ Metric.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill\ Metric.desktop
+	cp /home/$USERNAME/dev/probe_basic/dev_launchers/Probe\ Basic\ Rack\ ATC\ Mill.desktop  ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Rack\ ATC\ Mill.desktop
 
 	# replace "username" with real username in desktop launchers
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Designer\ for\ PB\ Lathe.desktop
@@ -88,6 +89,7 @@ then
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ Lathe.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill.desktop
 	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ ATC\ Mill\ Metric.desktop
+	sed -i "s/username/$USERNAME/g" ${XDG_DESKTOP_DIR:-$HOME/Desktop}/Probe\ Basic\ RackATC\ Mill.desktop
 
 	# ensure icons and fonts paths exist
 	mkdir -p /home/$USERNAME/.local/share/icons/
