@@ -126,6 +126,32 @@ else
 
 fi
 
+# Guard against a PyQt5 wheel sneaking into the venv.
+#
+# Bookworm ships python3-pyqt5 5.15.9 built against system Qt 5.15.8, which is what
+# Qt Designer, LinuxCNC and the apt PyQt5 submodules (qtopengl/qsci/qtmultimedia/
+# qtquick/dbus.mainloop) all link against. Any PyQt5 wheel from PyPI bundles its own
+# Qt (5.15.19) and shadows the system package, which breaks editvcp with an
+# "undefined symbol ... Qt_5_PRIVATE_API" ImportError. If some dependency pulls the
+# wheel in anyway, remove it so the apt package is used.
+PYQT5_PATH=$(python3 -c "import PyQt5; print(PyQt5.__file__)" 2>/dev/null)
+case "$PYQT5_PATH" in
+	*/venv/*)
+		echo -e "\e[1;33mRemoving PyQt5 wheel from venv so the system PyQt5 is used...\e[0m"
+		pip uninstall -y PyQt5 PyQt5-Qt5 PyQt5-sip
+		;;
+esac
+
+# Confirm the system PyQt5 is what actually loads, and fail loudly if not.
+if ! python3 -c "
+import PyQt5, PyQt5.QtCore as C
+from PyQt5.QtOpenGL import QGLFormat
+assert PyQt5.__file__.startswith('/usr/lib/python3/dist-packages'), PyQt5.__file__
+print('PyQt5 OK: %s (Qt %s)' % (PyQt5.__file__, C.qVersion()))
+"; then
+	echo -e "\e[1;31mWARNING: venv is not using the system PyQt5 - Qt Designer (editvcp) will fail.\e[0m"
+fi
+
 # Create a zenity dialog box to ask the user if they want to reboot
 if zenity --question --text="Do you want to reboot the system?"; then
     # If the user clicked "Yes", reboot the system
